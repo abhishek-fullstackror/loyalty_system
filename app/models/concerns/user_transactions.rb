@@ -4,7 +4,7 @@ module UserTransactions
     
     included do
         has_many :transactions
-        has_many :loyalty_points
+        has_one :loyalty_point
         validates :email, presence: true, uniqueness: true
         validates :name, presence: true
     end
@@ -15,6 +15,12 @@ module UserTransactions
     
     def foreign_transactions
       transactions.where(country: 'foreign')
+    end
+    
+    def check_free_coffee_reward
+      if loyalty_point && loyalty_point.points >= 100 && !free_coffee_reward
+        update(free_coffee_reward: true)
+      end
     end
    
 end

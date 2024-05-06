@@ -33,6 +33,14 @@ class TransactionsController < ApplicationController
     location_data.first&.country || "IN"
   end
 
+  # Checking for Free Coffee Reward
+  def check_free_coffee_reward(user)
+    if user.total_points >= 100
+      # Award free coffee reward
+      user.update(free_coffee_reward: true)
+    end
+  end
+
 end
 
 
