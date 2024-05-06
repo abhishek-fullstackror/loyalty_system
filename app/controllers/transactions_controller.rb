@@ -1,19 +1,23 @@
 class TransactionsController < ApplicationController
+  def new
+    @transaction = Transaction.new
+  end
+
   def create
-    @transaction = Transaction.new(transaction_params)
+    country_name = get_country_name
+   @transaction = current_user.transactions.build(transaction_params.merge(country: country_name))
     if @transaction.save
       update_user_points(@transaction.user)
-      render json: @transaction, status: :created
+      redirect_to root_path, notice: 'Transaction created successfully!'
     else
-      render json: @transaction.errors, status: :unprocessable_entity
+      render :new, locals: { error: @transaction.errors }, status: :unprocessable_entity
     end
   end
 
   private
   
   def transaction_params
-    country_name = get_country_name
-    params.require(:transaction).permit(:user_id, :amount).merge(country: country_name)
+    params.require(:transaction).permit(:amount)
   end
 
   def update_user_points(user)
@@ -26,7 +30,7 @@ class TransactionsController < ApplicationController
   def get_country_name
     ip_address = request.ip
     location_data = Geocoder.search(ip_address)
-    country_name = location_data.first&.country if location_data.present?
+    location_data.first&.country || "IN"
   end
 
 end
