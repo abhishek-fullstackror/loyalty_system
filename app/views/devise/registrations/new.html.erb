@@ -13,6 +13,12 @@
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
+
+  <div class="field">
+    <%= f.label :birthday_month %><br />
+    <%= f.number_field :birthday_month %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

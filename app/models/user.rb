@@ -3,12 +3,15 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  birthday_month         :string
 #  email                  :string(255)
 #  encrypted_password     :string           default(""), not null
+#  free_coffee_reward     :boolean          default(FALSE)
 #  name                   :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -23,4 +26,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
     include UserTransactions
+    after_commit :check_free_coffee_reward
 end

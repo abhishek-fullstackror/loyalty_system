@@ -1,4 +1,8 @@
 <%if user_signed_in?%>
+     <%if current_user.role == "admin"%>
+       <%=link_to 'Show cash rebate eligible Users', admin_check_cash_rebate_eligibility_path%>
+       <%=link_to 'Show free movie ticket eligible Users', admin_check_free_movie_tickets_eligibility_path%>
+     <%end%>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
     <%=link_to 'New Transaction', new_transaction_path%>
 <%else%>
