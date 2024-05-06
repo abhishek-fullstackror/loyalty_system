@@ -1,0 +1,2 @@
+module Admin::RebateEligibilitiesHelper
+end
