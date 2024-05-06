@@ -59,7 +59,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # For better error pages
   gem 'better_errors'
+
+  # For automatically annotating models with schema information
+  gem 'annotate'
 end
 
 group :test do
@@ -67,3 +72,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Catch unsafe migrations in development
+gem "strong_migrations"
+
+# FOR USER GEOCODING USER LOCATION
+gem 'geocoder'
+
