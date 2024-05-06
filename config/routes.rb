@@ -1,6 +1,7 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  resources :users
-  resources :transactions, only: [:create]
-  resources :rewards, only: [:index]
+  root 'home#index'
+  devise_for :users
+  resources :transactions, only: %i(new create)
+  resources :rewards, only: %i(index)
 end

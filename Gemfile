@@ -78,4 +78,5 @@ gem "strong_migrations"
 
 # FOR USER GEOCODING USER LOCATION
 gem 'geocoder'
-
+# FOR USER AUTHENTICATION
+gem 'devise'
