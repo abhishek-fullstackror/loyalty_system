@@ -22,4 +22,10 @@ amount > $100
 - A Free Movie Tickets reward is given to new users when their spending is > $1000 within 60
 days of their first transaction
 
+**Loyalty Rules**:
+ 
+  Level 1
+- A standard tier customer is an end user who accumulates 0 points
+- A gold tier customer is an end user who accumulates 1000 points
+- A platinum tier customer is an end user who accumulates 5000 points
 
