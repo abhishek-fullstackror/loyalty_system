@@ -22,4 +22,6 @@
 #
 class User < ApplicationRecord
     include UserTransactions
+      
+    
 end
